@@ -2,18 +2,26 @@
 		<div class="col-xs-3">
 	　		<h1>User info</h1>
 			<%= attachment_image_tag user, :profile_image, size:"60x60", format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "noimage.jpg" %>
-	    <h3 class="profile-name">name</h3>
+	    <h3 class="profile-name">name
 	    	<div class="user-name">
 	    		<%= user.name %>
 	    	</div>
-	    <h3 class="profile-introduction">introduction</h3>
+	    </h3>
+
+	    <h3 class="profile-introduction">introduction
 	    	<div class="user-introduction">
-	    	<%= user.introduction %>
-	    	</div>
+				<%= user.introduction %>
+			</div>
+	    </h3>
 	    	<% if user == current_user %>
-		    	<%= link_to "プロフィール編集", edit_user_path(current_user) %>
+
+		    	<%= link_to edit_user_path(current_user), class: 'btn btn-default' do %>
+		    	<span style="color: black" class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+		    	<% end %>
 		    <% else %>
-		    	<%= link_to "プロフィール編集", user_path(current_user) %>
+		    	<%= link_to user_path(current_user), class: 'btn btn-default' do %>
+		    	<span style="color: black" class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+		    	<% end %>
 		    <% end %>
 
 			<h3>New book</h3>
